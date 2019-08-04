@@ -7,14 +7,14 @@ namespace client
     {
         static void Main(string[] args)
         {
-            if (args.Length != 3 || args[1] != "-c")
+            if (args.Length != 2 || args[0] != "-c")
             {
                 ShowUsage();
                 return;
             }
 
             var server = Factory.Create();
-            server.Send("Hello World!");
+            server.SendFile(args[1]);
         }
 
         private static void ShowUsage()
