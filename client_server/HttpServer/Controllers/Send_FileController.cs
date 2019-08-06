@@ -14,8 +14,6 @@ namespace HttpServer.Controllers
         public Send_FileController(Config config)
         {
             this.config = config;
-            Console.WriteLine("\n\n\n");
-            Console.WriteLine(config.OutputFolder);
         }
 
         // GET api/send_file
