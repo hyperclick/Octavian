@@ -13,8 +13,11 @@ namespace client
                 return;
             }
 
-            var server = Factory.Create();
-            server.SendFile(args[1]);
+            using (var server = Factory.Create())
+            {
+                server.SendFile(args[1]);
+            }
+
         }
 
         private static void ShowUsage()
