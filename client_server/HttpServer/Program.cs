@@ -19,7 +19,10 @@ namespace HttpServer
                 ShowUsage();
                 return;
             }
-            CreateWebHostBuilder(args).Build().Run();
+            using (var host = CreateWebHostBuilder(args).Build())
+            {
+                host.Run();
+            }
         }
 
         private static void ShowUsage()
