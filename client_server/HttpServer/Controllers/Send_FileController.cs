@@ -14,13 +14,15 @@ namespace HttpServer.Controllers
         public Send_FileController(Config config)
         {
             this.config = config;
+            Console.WriteLine("\n\n\n");
+            Console.WriteLine(config.OutputFolder);
         }
 
         // GET api/send_file
         [HttpPost]
         public ActionResult<IEnumerable<string>> Post(string client_id)
         {
-            using (var file = System.IO.File.Create(Path.Combine(config.Folder, GetFileName())))
+            using (var file = System.IO.File.Create(Path.Combine(config.OutputFolder, GetFileName())))
             {
                 HttpContext.Request.Body.CopyTo(file);
             }

@@ -8,6 +8,6 @@ namespace HttpServer
 {
     public class Config
     {
-        public string Folder = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+        public string OutputFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
     }
 }
