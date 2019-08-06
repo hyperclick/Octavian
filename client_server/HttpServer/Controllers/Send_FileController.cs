@@ -1,7 +1,5 @@
 ﻿using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -11,11 +9,18 @@ namespace HttpServer.Controllers
     [ApiController]
     public class Send_FileController : ControllerBase
     {
+        private readonly Config config;
+
+        public Send_FileController(Config config)
+        {
+            this.config = config;
+        }
+
         // GET api/send_file
         [HttpPost]
         public ActionResult<IEnumerable<string>> Post(string client_id)
         {
-            using (var file = System.IO.File.Create(GetFileName()))
+            using (var file = System.IO.File.Create(Path.Combine(config.Folder, GetFileName())))
             {
                 HttpContext.Request.Body.CopyTo(file);
             }
